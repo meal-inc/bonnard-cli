@@ -105,14 +105,20 @@ bon mcp test                  # Verify the connection
 ## Auto-Detected from Your Project
 
 <p align="center">
-  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="100%" />
+  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, DuckDB, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="100%" />
 </p>
 
 Bonnard automatically detects your warehouses and data tools. Point it at your project and it discovers schemas, tables, and relationships.
 
-**Warehouses** — Snowflake, BigQuery, PostgreSQL, Databricks
-
-**Data Tools** — dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations
+- **Snowflake** — full support including Snowpark
+- **Google BigQuery** — native integration
+- **Databricks** — SQL warehouses and Unity Catalog
+- **PostgreSQL** — including cloud-hosted variants (Supabase, Neon, RDS)
+- **DuckDB** — local development and testing
+- **dbt** — model and profile import
+- **Dagster, Prefect, Airflow** — orchestration tools
+- **Looker, Cube, Evidence** — existing BI layers
+- **SQLMesh, Soda, Great Expectations** — data quality and transformation
 
 ## Querying
 
