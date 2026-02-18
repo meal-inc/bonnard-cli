@@ -1,87 +1,202 @@
-# @bonnard/cli
+<p align="center">
+  <a href="https://www.bonnard.dev">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.png" />
+      <source media="(prefers-color-scheme: light)" srcset="./assets/banner-light.png" />
+      <img alt="Bonnard — the semantic engine for MCP clients, AI agents, and data teams" src="./assets/banner-light.png" width="100%" />
+    </picture>
+  </a>
+</p>
 
-The Bonnard CLI (`bon`) takes you from zero to a deployed semantic layer in minutes. Define metrics in YAML, validate locally, deploy, and query — from your terminal or AI coding agent.
+<p align="center">
+  <strong>The semantic engine for MCP clients. Define metrics once, query from anywhere.</strong>
+</p>
 
-**Open source** — [view source on GitHub](https://github.com/meal-inc/bonnard-cli)
+<p align="center">
+  <a href="https://www.npmjs.com/package/@bonnard/cli"><img src="https://img.shields.io/npm/v/@bonnard/cli?style=flat-square&color=0891b2" alt="npm version" /></a>
+  <a href="https://github.com/meal-inc/bonnard-cli/blob/main/LICENSE"><img src="https://img.shields.io/github/license/meal-inc/bonnard-cli?style=flat-square" alt="MIT License" /></a>
+  <a href="https://discord.com/invite/RQuvjGRz"><img src="https://img.shields.io/badge/Discord-Join%20us-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" /></a>
+</p>
 
-## Quick start
+<p align="center">
+  <a href="https://docs.bonnard.dev/docs/">Docs</a> &middot;
+  <a href="https://docs.bonnard.dev/docs/getting-started">Getting Started</a> &middot;
+  <a href="https://docs.bonnard.dev/docs/changelog">Changelog</a> &middot;
+  <a href="https://discord.com/invite/RQuvjGRz">Discord</a> &middot;
+  <a href="https://www.bonnard.dev">Website</a>
+</p>
+
+---
+
+Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed analytics API in minutes — for AI agents, BI tools, and data teams. Define metrics and dimensions in YAML, validate locally, and ship to production. Works with Snowflake, BigQuery, Databricks, and PostgreSQL. Ships with native integrations for Claude Code, Cursor, and Codex. Built with TypeScript.
+
+## Why Bonnard?
+
+Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around — agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, BI tools, and human analysts through a single governed API.
+
+<p align="center">
+  <img src="./assets/architecture.png" alt="Bonnard architecture — data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="720" />
+</p>
+
+## Quick Start
+
+No install required. Run directly with npx:
 
 ```bash
-npx @bonnard/cli init           # Create project structure + agent templates
-bon datasource add --demo       # Add demo dataset (no warehouse needed)
-bon validate                    # Check syntax
-bon login                       # Authenticate with Bonnard
-bon deploy -m "Initial deploy"  # Deploy to Bonnard
+npx @bonnard/cli init
 ```
 
-No install needed — `npx` runs the CLI directly. Or install globally for shorter commands:
+Or install globally:
 
 ```bash
 npm install -g @bonnard/cli
 ```
 
+Then follow the setup flow:
+
+```bash
+bon init                      # Scaffold project + agent configs
+bon datasource add            # Connect your warehouse
+bon validate                  # Check your models locally
+bon login                     # Authenticate
+bon deploy                    # Ship it
+```
+
+No warehouse yet? Start exploring with a full retail demo dataset:
+
+```bash
+bon datasource add --demo
+```
+
 Requires Node.js 20+.
 
-## Commands
+## Agent-Native from Day One
 
-| Command | Description |
-|---------|-------------|
-| `bon init` | Create project structure and AI agent templates |
-| `bon login` | Authenticate with Bonnard |
-| `bon logout` | Remove stored credentials |
-| `bon whoami` | Show current login status |
-| `bon datasource add` | Add a data source (interactive) |
-| `bon datasource add --demo` | Add read-only demo dataset |
-| `bon datasource add --from-dbt` | Import from dbt profiles |
-| `bon datasource list` | List configured data sources |
-| `bon datasource remove <name>` | Remove a data source |
-| `bon validate` | Validate cube and view YAML |
-| `bon deploy -m "message"` | Deploy to Bonnard |
-| `bon deployments` | List deployment history |
-| `bon diff <id>` | View changes in a deployment |
-| `bon annotate <id>` | Add context to deployment changes |
-| `bon query '{"measures":["orders.count"]}'` | Query the semantic layer (JSON) |
-| `bon query "SELECT ..." --sql` | Query the semantic layer (SQL) |
-| `bon mcp` | MCP setup instructions for AI agents |
-| `bon mcp test` | Test MCP server connectivity |
-| `bon docs [topic]` | Browse modeling documentation |
-| `bon docs --search "joins"` | Search documentation |
+When you run `bon init`, Bonnard generates context files so AI coding agents understand your semantic layer from the first prompt:
 
-## Agent-ready from the start
+```
+you@work my-project % bon init
 
-`bon init` generates context files for your AI coding tools:
+Initialised Bonnard project
+Core files:
+  bon.yaml
+  bonnard/cubes/
+  bonnard/views/
+Agent support:
+  .claude/rules/bonnard.md
+  .claude/skills/bonnard-get-started/
+  .cursor/rules/bonnard.mdc
+  AGENTS.md
+```
 
-- **Claude Code** — `.claude/rules/` + get-started skill
-- **Cursor** — `.cursor/rules/` with auto-apply frontmatter
-- **Codex** — `AGENTS.md` + skills folder
+| Agent | What gets generated |
+| --- | --- |
+| **Claude Code** | `.claude/rules/bonnard.md` + skill templates in `.claude/skills/` |
+| **Cursor** | `.cursor/rules/bonnard.mdc` with frontmatter configuration |
+| **Codex** | `AGENTS.md` + skills directory |
 
-Your agent understands Bonnard's modeling language from the first prompt.
+Set up your MCP server so agents can query your semantic layer directly:
 
-## Project structure
+```bash
+bon mcp setup                 # Configure MCP server
+bon mcp test                  # Verify the connection
+```
 
-After `bon init`:
+## Supported Data Sources
+
+<p align="center">
+  <img src="./assets/datasources.png" alt="Supported data sources — Snowflake, BigQuery, Databricks, PostgreSQL, MySQL, ClickHouse, DuckDB" width="600" />
+</p>
+
+Bonnard connects to the warehouses and databases your team already uses:
+
+- **Snowflake** — full support including Snowpark
+- **Google BigQuery** — native integration
+- **Databricks** — SQL warehouses and Unity Catalog
+- **PostgreSQL** — including cloud-hosted variants (Supabase, Neon, RDS)
+- **MySQL** — direct connection
+- **ClickHouse** — analytical workloads
+- **DuckDB** — local development and testing
+
+Data source detection is automatic. Point Bonnard at your connection and it discovers schemas, tables, and relationships.
+
+## Querying
+
+Query your semantic layer from the terminal using JSON or SQL syntax:
+
+```bash
+# JSON query
+bon query --measures revenue,order_count --dimensions product_category --time-dimension created_at
+
+# SQL query
+bon query --sql "SELECT product_category, MEASURE(revenue) FROM orders GROUP BY 1"
+```
+
+Agents connected via MCP can run the same queries programmatically, with full access to your governed metric definitions.
+
+## Project Structure
 
 ```
 my-project/
 ├── bon.yaml              # Project configuration
 ├── bonnard/
-│   ├── cubes/            # Cube definitions (measures, dimensions, joins)
-│   └── views/            # View definitions (curated query interfaces)
-└── .bon/                 # Local config (gitignored)
-    └── datasources.yaml  # Data source credentials
+│   ├── cubes/            # Metric and dimension definitions
+│   └── views/            # Curated query interfaces
+├── .bon/                 # Local credentials (gitignored)
+├── .claude/              # Claude Code agent context
+├── .cursor/              # Cursor agent context
+└── AGENTS.md             # Codex agent context
 ```
 
 ## CI/CD
 
+Deploy from your pipeline with the `--ci` flag for non-interactive mode:
+
 ```bash
-bon deploy --ci -m "CI deploy"
+bon deploy --ci
 ```
 
-Non-interactive mode for pipelines. Datasources are synced automatically.
+Handles automatic datasource synchronisation and skips interactive prompts. Fits into GitHub Actions, GitLab CI, or any pipeline that runs Node.js.
+
+## Commands
+
+| Command | Description |
+| --- | --- |
+| `bon init` | Scaffold a new project with agent configs |
+| `bon datasource add` | Connect a data source (or `--demo` for sample data) |
+| `bon datasource add --from-dbt` | Import from dbt profiles |
+| `bon datasource list` | List connected data sources |
+| `bon validate` | Validate models locally before deploying |
+| `bon deploy` | Deploy semantic layer to production |
+| `bon deployments` | List active deployments |
+| `bon diff` | Preview changes before deploying |
+| `bon annotate` | Add metadata and descriptions to models |
+| `bon query` | Run queries from the terminal (JSON or SQL) |
+| `bon mcp setup` | Configure MCP server for agent access |
+| `bon mcp test` | Test MCP connection |
+| `bon docs` | Browse or search documentation from the CLI |
+| `bon login` / `bon logout` | Manage authentication |
+| `bon whoami` | Check current session |
+
+For the full CLI reference, see the [documentation](https://docs.bonnard.dev/docs/cli-reference).
 
 ## Documentation
 
-- [Getting Started](https://docs.bonnard.dev/docs/getting-started)
-- [CLI Reference](https://docs.bonnard.dev/docs/cli)
-- [Modeling Guide](https://docs.bonnard.dev/docs/modeling/cubes)
-- [Querying](https://docs.bonnard.dev/docs/querying)
+- [Getting Started](https://docs.bonnard.dev/docs/getting-started) — from zero to deployed in minutes
+- [CLI Reference](https://docs.bonnard.dev/docs/cli-reference) — every command, flag, and option
+- [Modeling Guide](https://docs.bonnard.dev/docs/modeling) — cubes, views, metrics, and dimensions
+- [Querying](https://docs.bonnard.dev/docs/querying) — JSON and SQL query syntax
+- [Changelog](https://docs.bonnard.dev/docs/changelog) — what shipped and when
+
+## Community
+
+- [Discord](https://discord.com/invite/RQuvjGRz) — ask questions, share feedback, connect with the team
+- [GitHub Issues](https://github.com/meal-inc/bonnard-cli/issues) — bug reports and feature requests
+- [LinkedIn](https://www.linkedin.com/company/bonnarddev/) — follow for updates
+- [Website](https://www.bonnard.dev) — learn more about Bonnard
+
+Contributions are welcome. If you find a bug or have an idea, open an issue or submit a pull request.
+
+## License
+
+[MIT](./LICENSE)
