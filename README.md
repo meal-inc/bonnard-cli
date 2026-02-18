@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.png" />
       <source media="(prefers-color-scheme: light)" srcset="./assets/banner-light.png" />
-      <img alt="Bonnard — the semantic engine for MCP clients, AI agents, and data teams" src="./assets/banner-light.png" width="100%" />
+      <img alt="Bonnard -the semantic engine for MCP clients, AI agents, and data teams" src="./assets/banner-light.png" width="100%" />
     </picture>
   </a>
 </p>
@@ -28,14 +28,14 @@
 
 ---
 
-Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed analytics API in minutes — for AI agents, BI tools, and data teams. Define metrics and dimensions in YAML, validate locally, and ship to production. Works with Snowflake, BigQuery, Databricks, and PostgreSQL. Ships with native integrations for Claude Code, Cursor, and Codex. Built with TypeScript.
+Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed analytics API in minutes -for AI agents, BI tools, and data teams. Define metrics and dimensions in YAML, validate locally, and ship to production. Works with Snowflake, BigQuery, Databricks, and PostgreSQL. Ships with native integrations for Claude Code, Cursor, and Codex. Built with TypeScript.
 
 ## Why Bonnard?
 
-Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around — agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, BI tools, and human analysts through a single governed API.
+Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around -agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, BI tools, and human analysts through a single governed API.
 
 <p align="center">
-  <img src="./assets/architecture.png" alt="Bonnard architecture — data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="100%" />
+  <img src="./assets/architecture.png" alt="Bonnard architecture -data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="100%" />
 </p>
 
 ## Quick Start
@@ -105,20 +105,20 @@ bon mcp test                  # Verify the connection
 ## Auto-Detected from Your Project
 
 <p align="center">
-  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, DuckDB, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="100%" />
+  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools -Snowflake, BigQuery, PostgreSQL, Databricks, DuckDB, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="100%" />
 </p>
 
 Bonnard automatically detects your warehouses and data tools. Point it at your project and it discovers schemas, tables, and relationships.
 
-- **Snowflake** — full support including Snowpark
-- **Google BigQuery** — native integration
-- **Databricks** — SQL warehouses and Unity Catalog
-- **PostgreSQL** — including cloud-hosted variants (Supabase, Neon, RDS)
-- **DuckDB** — local development and testing
-- **dbt** — model and profile import
-- **Dagster, Prefect, Airflow** — orchestration tools
-- **Looker, Cube, Evidence** — existing BI layers
-- **SQLMesh, Soda, Great Expectations** — data quality and transformation
+- **Snowflake** -full support including Snowpark
+- **Google BigQuery** -native integration
+- **Databricks** -SQL warehouses and Unity Catalog
+- **PostgreSQL** -including cloud-hosted variants (Supabase, Neon, RDS)
+- **DuckDB** -local development and testing
+- **dbt** -model and profile import
+- **Dagster, Prefect, Airflow** -orchestration tools
+- **Looker, Cube, Evidence** -existing BI layers
+- **SQLMesh, Soda, Great Expectations** -data quality and transformation
 
 ## Querying
 
@@ -182,18 +182,18 @@ For the full CLI reference, see the [documentation](https://docs.bonnard.dev/doc
 
 ## Documentation
 
-- [Getting Started](https://docs.bonnard.dev/docs/getting-started) — from zero to deployed in minutes
-- [CLI Reference](https://docs.bonnard.dev/docs/cli-reference) — every command, flag, and option
-- [Modeling Guide](https://docs.bonnard.dev/docs/modeling) — cubes, views, metrics, and dimensions
-- [Querying](https://docs.bonnard.dev/docs/querying) — JSON and SQL query syntax
-- [Changelog](https://docs.bonnard.dev/docs/changelog) — what shipped and when
+- [Getting Started](https://docs.bonnard.dev/docs/getting-started) -from zero to deployed in minutes
+- [CLI Reference](https://docs.bonnard.dev/docs/cli-reference) -every command, flag, and option
+- [Modeling Guide](https://docs.bonnard.dev/docs/modeling) -cubes, views, metrics, and dimensions
+- [Querying](https://docs.bonnard.dev/docs/querying) -JSON and SQL query syntax
+- [Changelog](https://docs.bonnard.dev/docs/changelog) -what shipped and when
 
 ## Community
 
-- [Discord](https://discord.com/invite/RQuvjGRz) — ask questions, share feedback, connect with the team
-- [GitHub Issues](https://github.com/meal-inc/bonnard-cli/issues) — bug reports and feature requests
-- [LinkedIn](https://www.linkedin.com/company/bonnarddev/) — follow for updates
-- [Website](https://www.bonnard.dev) — learn more about Bonnard
+- [Discord](https://discord.com/invite/RQuvjGRz) -ask questions, share feedback, connect with the team
+- [GitHub Issues](https://github.com/meal-inc/bonnard-cli/issues) -bug reports and feature requests
+- [LinkedIn](https://www.linkedin.com/company/bonnarddev/) -follow for updates
+- [Website](https://www.bonnard.dev) -learn more about Bonnard
 
 Contributions are welcome. If you find a bug or have an idea, open an issue or submit a pull request.
 
