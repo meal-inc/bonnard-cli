@@ -35,7 +35,7 @@ Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed
 Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around — agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, BI tools, and human analysts through a single governed API.
 
 <p align="center">
-  <img src="./assets/architecture.png" alt="Bonnard architecture — data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="720" />
+  <img src="./assets/architecture.png" alt="Bonnard architecture — data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="100%" />
 </p>
 
 ## Quick Start
@@ -105,7 +105,7 @@ bon mcp test                  # Verify the connection
 ## Auto-Detected from Your Project
 
 <p align="center">
-  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="600" />
+  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="100%" />
 </p>
 
 Bonnard automatically detects your warehouses and data tools. Point it at your project and it discovers schemas, tables, and relationships.
