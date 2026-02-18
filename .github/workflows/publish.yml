@@ -2,6 +2,16 @@ name: Publish to npm
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump (patch, minor, major)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   publish:
@@ -22,6 +32,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Bump version
+        env:
+          BUMP: ${{ inputs.version }}
+        run: npm version "$BUMP" --no-git-tag-version
+
       - name: Build
         run: npm run build
 
@@ -30,10 +45,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --provenance
 
-      - name: Tag release
+      - name: Commit version bump
         run: |
           NEW_VERSION=$(node -p "require('./package.json').version")
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "Release @bonnard/cli v${NEW_VERSION}"
           git tag "cli-v${NEW_VERSION}"
-          git push origin --tags
+          git push origin main --tags
