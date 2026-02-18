@@ -34,7 +34,7 @@ jobs:
 
       - name: Bump version
         env:
-          BUMP: 
+          BUMP: ${{ inputs.version }}
         run: npm version "$BUMP" --no-git-tag-version
 
       - name: Build
@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish with provenance
         env:
-          NODE_AUTH_TOKEN: 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
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --provenance
 
       - name: Commit version bump
