@@ -1,0 +1,56 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump (patch, minor, major)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Bump version
+        env:
+          BUMP: 
+        run: npm version "$BUMP" --no-git-tag-version
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish with provenance
+        env:
+          NODE_AUTH_TOKEN: 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
+        run: npm publish --access public --provenance
+
+      - name: Commit version bump
+        run: |
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "Release @bonnard/cli v${NEW_VERSION}"
+          git tag "cli-v${NEW_VERSION}"
+          git push origin main --tags
