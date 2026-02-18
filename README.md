@@ -28,15 +28,24 @@
 
 ---
 
-Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed analytics API in minutes -for AI agents, BI tools, and data teams. Define metrics and dimensions in YAML, validate locally, and ship to production. Works with Snowflake, BigQuery, Databricks, and PostgreSQL. Ships with native integrations for Claude Code, Cursor, and Codex. Built with TypeScript.
+Bonnard is an agent-native semantic layer CLI. Deploy an MCP server and governed analytics API in minutes -for AI agents, embedded analytics, and data teams. Define metrics and dimensions in YAML, validate locally, and ship to production. Works with Snowflake, BigQuery, Databricks, and PostgreSQL. Ships with native integrations for Claude Code, Cursor, and Codex. Built with TypeScript.
 
 ## Why Bonnard?
 
-Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around -agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, BI tools, and human analysts through a single governed API.
+Most semantic layers were built for dashboards and retrofitted for AI. Bonnard was built the other way around -agent-native from day one with Model Context Protocol (MCP) as a core feature, not a plugin. One CLI takes you from an empty directory to a production semantic layer serving AI agents, embedded analytics, internal tools, and downstream services through a single governed API.
 
 <p align="center">
   <img src="./assets/architecture.png" alt="Bonnard architecture -data sources flow through the semantic layer to AI agents, BI tools, and MCP clients" width="100%" />
 </p>
+
+## Use Cases
+
+- **AI agents** - give LLMs governed access to your metrics through MCP
+- **Embedded analytics** - power analytics in your product with a single API
+- **Customer-facing dashboards** - expose curated metrics to end users
+- **Internal data apps** - self-serve reporting for non-technical teams
+- **Data APIs** - serve governed metrics to downstream services and pipelines
+- **BI tool consolidation** - one semantic layer backing every consumer
 
 ## Quick Start
 
