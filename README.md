@@ -102,23 +102,17 @@ bon mcp setup                 # Configure MCP server
 bon mcp test                  # Verify the connection
 ```
 
-## Supported Data Sources
+## Auto-Detected from Your Project
 
 <p align="center">
-  <img src="./assets/datasources.png" alt="Supported data sources — Snowflake, BigQuery, Databricks, PostgreSQL, MySQL, ClickHouse, DuckDB" width="600" />
+  <img src="./assets/datasources.png" alt="Auto-detected warehouses and data tools — Snowflake, BigQuery, PostgreSQL, Databricks, dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations" width="600" />
 </p>
 
-Bonnard connects to the warehouses and databases your team already uses:
+Bonnard automatically detects your warehouses and data tools. Point it at your project and it discovers schemas, tables, and relationships.
 
-- **Snowflake** — full support including Snowpark
-- **Google BigQuery** — native integration
-- **Databricks** — SQL warehouses and Unity Catalog
-- **PostgreSQL** — including cloud-hosted variants (Supabase, Neon, RDS)
-- **MySQL** — direct connection
-- **ClickHouse** — analytical workloads
-- **DuckDB** — local development and testing
+**Warehouses** — Snowflake, BigQuery, PostgreSQL, Databricks
 
-Data source detection is automatic. Point Bonnard at your connection and it discovers schemas, tables, and relationships.
+**Data Tools** — dbt, Dagster, Prefect, Airflow, Looker, Cube, Evidence, SQLMesh, Soda, Great Expectations
 
 ## Querying
 
