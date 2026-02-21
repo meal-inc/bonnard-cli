@@ -1,0 +1,107 @@
+---
+name: bonnard-build-dashboard
+description: Guide a user through building and deploying a data dashboard using the Bonnard SDK and Chart.js. Use when user says "build a dashboard", "create a chart", "visualize data", or wants to deploy an HTML dashboard.
+allowed-tools: Bash(bon *)
+---
+
+# Build & Deploy a Dashboard
+
+This skill guides you through creating an HTML dashboard powered by the
+Bonnard SDK and deploying it as a hosted dashboard.
+
+## Phase 1: Get the Starter Template
+
+Fetch the SDK + Chart.js starter template:
+
+```bash
+bon docs sdk.chartjs
+```
+
+This shows a working HTML template with `@bonnard/sdk` loaded from CDN and
+a Chart.js example. Copy this as your starting point.
+
+## Phase 2: Explore Available Data
+
+Discover what measures and dimensions are available to query:
+
+```bash
+# List all views and their fields
+bon docs schema
+
+# Query a specific view to see what data looks like
+bon query '{"measures": ["view_name.measure"], "dimensions": ["view_name.dimension"], "limit": 5}'
+
+# Or use SQL format
+bon query --sql "SELECT MEASURE(total_revenue), date FROM sales_performance LIMIT 5"
+```
+
+Ask the user what data they want to visualize. Match their request to
+available views and measures.
+
+## Phase 3: Build the HTML File
+
+Create an HTML file that:
+1. Loads `@bonnard/sdk` from CDN (see the template from Phase 1)
+2. Initializes the SDK with a publishable key placeholder
+3. Queries the semantic layer for the data the user wants
+4. Renders charts using Chart.js (or another chart library)
+
+Key points:
+- The SDK uses `Bonnard.query()` to fetch data from the deployed semantic layer
+- Use the view names and measure/dimension names from Phase 2
+- The publishable key will be provided by the user or can be created with `bon keys create`
+- Keep the HTML self-contained (inline CSS/JS, load libraries from CDN)
+
+Save the file (e.g., `dashboard.html`).
+
+## Phase 4: Preview Locally
+
+Let the user preview the file in their browser before deploying.
+They'll need to set a valid publishable key in the HTML first.
+
+```bash
+# Create a publishable key if needed
+bon keys create --name "Dashboard" --type publishable
+```
+
+## Phase 5: Deploy
+
+Deploy the HTML file as a hosted dashboard on Bonnard:
+
+```bash
+bon dashboard deploy dashboard.html
+```
+
+This will:
+- Upload the HTML content
+- Assign a slug (derived from filename, or use `--slug`)
+- Print the public URL where the dashboard is accessible
+
+Options:
+- `--slug <slug>` — custom URL slug (default: derived from filename)
+- `--title <title>` — dashboard title (default: from `<title>` tag)
+
+## Phase 6: View Live
+
+Open the deployed dashboard in the browser:
+
+```bash
+bon dashboard open dashboard
+```
+
+## Iteration
+
+To update the dashboard, edit the HTML file and redeploy:
+
+```bash
+bon dashboard deploy dashboard.html
+```
+
+Each deploy increments the version. Use `bon dashboard list` to see all
+deployed dashboards with their versions and URLs.
+
+To remove a dashboard:
+
+```bash
+bon dashboard remove dashboard
+```
