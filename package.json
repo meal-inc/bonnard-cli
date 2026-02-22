@@ -1,0 +1,48 @@
+{
+  "name": "@bonnard/cli",
+  "version": "0.3.2",
+  "type": "module",
+  "bin": {
+    "bon": "./dist/bin/bon.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown src/bin/bon.ts --format esm --out-dir dist/bin && vite build viewer && mv dist/index.html dist/viewer.html && cp -r src/templates dist/ && mkdir -p dist/docs/topics dist/docs/schemas && cp ./content/index.md dist/docs/_index.md && cp ./content/overview.md ./content/getting-started.md dist/docs/topics/ && cp ./content/modeling/*.md dist/docs/topics/ && cp ./content/dashboards/*.md dist/docs/topics/ && cp ./content/sdk/*.md dist/docs/topics/",
+    "dev": "tsdown src/bin/bon.ts --format esm --out-dir dist/bin --watch",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.0.0",
+    "@toon-format/toon": "^2.1.0",
+    "commander": "^12.0.0",
+    "open": "^11.0.0",
+    "picocolors": "^1.0.0",
+    "yaml": "^2.8.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@bonnard/react": "^0.4.2",
+    "@bonnard/sdk": "^0.4.2",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "buffer": "^6.0.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsdown": "^0.20.1",
+    "vite": "^7.3.0",
+    "vite-plugin-singlefile": "^2.3.0",
+    "vitest": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meal-inc/bonnard-cli.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
