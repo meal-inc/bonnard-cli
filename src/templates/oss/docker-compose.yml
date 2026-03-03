@@ -1,0 +1,47 @@
+volumes:
+  models: {}
+
+services:
+  cubestore:
+    image: cubejs/cubestore:${CUBE_VERSION:-v1.6}
+    restart: unless-stopped
+
+  cube:
+    image: cubejs/cube:${CUBE_VERSION:-v1.6}
+    restart: unless-stopped
+    ports:
+      - "${CUBE_PORT:-4000}:4000"
+    volumes:
+      - models:/cube/conf/model:ro
+      - ./cube.js:/cube/conf/cube.js:ro
+      - ./data:/data
+    env_file: .env
+    environment:
+      CUBEJS_CUBESTORE_HOST: cubestore
+      CUBEJS_SQL_PORT: "15432"
+    depends_on:
+      cubestore:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:4000/livez').then(()=>process.exit(0)).catch(()=>process.exit(1))\""]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+
+  bonnard:
+    image: ghcr.io/bonnard-data/bonnard:${BONNARD_VERSION:-latest}
+    restart: unless-stopped
+    ports:
+      - "${BONNARD_PORT:-3000}:3000"
+    volumes:
+      - models:/app/models
+    environment:
+      CUBE_API_URL: http://cube:4000
+      CUBE_API_SECRET: ${CUBEJS_API_SECRET:-}
+      ADMIN_TOKEN: ${ADMIN_TOKEN:-}
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+      MODEL_DIR: /app/models
+    depends_on:
+      cube:
+        condition: service_healthy
