@@ -1,6 +1,6 @@
 {
   "name": "@bonnard/cli",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "type": "module",
   "bin": {
     "bon": "./dist/bin/bon.mjs"
