@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/meal-inc-bonnard-cli-badge.png)](https://mseep.ai/app/meal-inc-bonnard-cli)
+
 <p align="center">
   <a href="https://www.bonnard.dev">
     <picture>
