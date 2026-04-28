@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/bonnard-data-bonnard-cli-badge.png)](https://mseep.ai/app/bonnard-data-bonnard-cli)
+
 <p align="center">
   <a href="https://www.bonnard.dev">
     <picture>
