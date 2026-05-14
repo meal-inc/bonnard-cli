@@ -1,0 +1,16 @@
+# Bonnard datasources configuration
+# This file contains credentials - add to .gitignore
+# Env vars like {{ env_var('PASSWORD') }} are resolved at deploy time
+
+datasources:
+  - name: contoso_demo
+    type: postgres
+    source: demo
+    config:
+      host: aws-1-eu-west-1.pooler.supabase.com
+      port: "5432"
+      database: postgres
+      schema: contoso
+    credentials:
+      username: demo_reader.yvbfzqogtdsqqkpyztlu
+      password: contoso-demo-2025!
